@@ -9,12 +9,13 @@ export default function Main() {
         </h2>
         <div>
           <form
-            action="submit"
+            action="POST"
             className="flex flex-col items-center justify-center mx-20"
           >
             <input
               id="title"
               type="text"
+              required
               placeholder="First Task"
               className="w-full mb-8 py-4 px-2 bg-transparent border-2 border-gray-400 rounded-md focus:outline-none focus:ring-0 focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none"
             />
@@ -22,13 +23,17 @@ export default function Main() {
             <textarea
               id="description"
               type="text"
-              className="w-full mb-8 py-4 px-2 bg-transparent border-2 border-gray-400 rounded-md focus:outline-none focus:ring-0 focus:border-b-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none"
+              className="w-full mb-8 py-4 px-2 bg-transparent border-2 border-gray-400 rounded-md focus:outline-none focus:ring-0 focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none "
               rows="5"
             >
               I wanna achieve my DREAMS...
             </textarea>
-            <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-2 md:mt-0">
-              Add
+            <button
+              type="submit"
+              className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-2 md:mt-0"
+            >
+              <i className="fa-solid fa-plus"></i>
+              <span className="ml-2">Add</span>
             </button>
           </form>
         </div>
