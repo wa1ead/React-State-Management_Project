@@ -1,7 +1,7 @@
 import { useState } from "react";
 import addTask from "../services/addTask";
 
-export default function Welcome() {
+export default function Welcome({ refresh }) {
   //THE TASK DATA STATE
   const [taskData, setTaskData] = useState({
     title: "",
@@ -28,6 +28,7 @@ export default function Welcome() {
       description: "",
       completion: false,
     });
+    refresh();
   };
 
   return (
@@ -45,6 +46,7 @@ export default function Welcome() {
             <input
               name="title"
               type="text"
+              value={taskData.title}
               required
               placeholder="First Task"
               className="w-full mb-8 py-4 px-2 bg-transparent border-2 border-gray-400 rounded-md focus:outline-none focus:ring-0 focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none"

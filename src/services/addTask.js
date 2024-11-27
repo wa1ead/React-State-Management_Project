@@ -1,10 +1,16 @@
 export default function addTask(task) {
+  //CHECKING IF THE TASK ARGUMENT IS PASSED
   if (!task) {
     console.error("No task provided!");
     return;
   }
 
-  const parsedTask = JSON.stringify(task);
-  localStorage.setItem("task", parsedTask);
-  console.log("Task saved:", parsedTask);
+  //GETTING THE PREVIOUS TASKS FROM LOCALSTORAGE
+  const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  //UPDATING THE TASKS ARRAY
+  const updatingTasks = [...existingTasks, task];
+
+  localStorage.setItem("tasks", JSON.stringify(updatingTasks));
+  console.log("Task saved:", task);
 }
