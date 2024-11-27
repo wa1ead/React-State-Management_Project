@@ -33,7 +33,7 @@ export default function Welcome({ refresh }) {
 
   return (
     <section className="bg-gray-950 text-gray-300">
-      <div className="container h-[80vh] mx-auto">
+      <div className="container mx-auto">
         <h1 className="text-lg font-semibold text-center pt-4 pb-12 md:font-bold md:text-2xl md:pt-10 md:pb-20">
           What's on your MIND today!
         </h1>
