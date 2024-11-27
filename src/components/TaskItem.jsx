@@ -1,8 +1,11 @@
 import React from "react";
 
-export default function TaskItem({ task }) {
+export default function TaskItem({ task, key }) {
   return (
-    <div className="flex flex-col items-center border border-gray-400 bg-gray-900 p-4 gap-2 rounded-lg ">
+    <div
+      className="flex flex-col items-center border border-gray-400 bg-gray-900 p-4 gap-2 rounded-lg "
+      key={key}
+    >
       <h2 className="font-semibold text-gray-200">{task.title}</h2>
       <p className="font-light text-gray-400">{task.description}</p>
       <div className="w-full flex justify-center items-center gap-6 mt-4 sm:gap-2">
