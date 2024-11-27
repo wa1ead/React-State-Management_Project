@@ -17,13 +17,13 @@ export default function TaskList() {
               sint, magnam eligendi iusto excepturi?
             </p>
             <div className="w-full flex justify-center items-center gap-6 mt-4 sm:gap-2">
-              <button className="border rounded-full py-1 px-2 bg-yellow-600">
+              <button className="border rounded-full py-1 px-2 bg-yellow-600 transition duration-300 ease-in-out hover:scale-110 hover:bg-yellow-500">
                 <i class="fa-regular fa-pen-to-square"></i>
               </button>
-              <button className="border rounded-full py-1 px-2 bg-green-600">
+              <button className="border rounded-full py-1 px-2 bg-green-600 transition duration-300 ease-in-out hover:scale-110 hover:bg-green-500">
                 Completed <i class="fa-regular fa-square-check"></i>
               </button>
-              <button className="border rounded-full py-1 px-2 bg-red-600">
+              <button className="border rounded-full py-1 px-2 bg-red-600 transition duration-300 ease-in-out hover:scale-110 hover:bg-red-500">
                 <i class="fa-regular fa-trash-can"></i>
               </button>
             </div>
