@@ -1,7 +1,7 @@
 import { useState } from "react";
 import addTask from "../services/addTask";
 
-export default function Welcome({ refresh }) {
+export default function Welcome() {
   //THE TASK DATA STATE
   const [taskData, setTaskData] = useState({
     title: "",
@@ -28,7 +28,7 @@ export default function Welcome({ refresh }) {
       description: "",
       completion: false,
     });
-    refresh();
+    window.location.reload();
   };
 
   return (

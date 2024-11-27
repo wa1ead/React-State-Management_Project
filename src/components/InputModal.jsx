@@ -28,6 +28,7 @@ export default function InputModal({ onClose }) {
       completion: false,
     });
     onClose();
+    window.location.reload();
   };
 
   return (
