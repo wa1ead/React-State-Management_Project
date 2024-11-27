@@ -1,6 +1,35 @@
-import React from "react";
+import { useState } from "react";
+import addTask from "../services/addTask";
 
 export default function Welcome() {
+  //THE TASK DATA STATE
+  const [taskData, setTaskData] = useState({
+    title: "",
+    description: "",
+    completion: false,
+  });
+
+  //HANDLING THE USER INPUTTED DATA FUNCTION
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTaskData((prevTaskData) => ({
+      ...prevTaskData,
+      [name]: value,
+    }));
+  };
+  console.log(taskData);
+
+  //SAVING THE NEW TASK FUNCTION
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    addTask(taskData);
+    setTaskData({
+      title: "",
+      description: "",
+      completion: false,
+    });
+  };
+
   return (
     <section className="bg-gray-950 text-gray-300">
       <div className="container h-[80vh] mx-auto">
@@ -11,20 +40,23 @@ export default function Welcome() {
           <form
             action="POST"
             className="flex flex-col items-center justify-center mx-20"
+            onSubmit={handleAddTask}
           >
             <input
-              id="title"
+              name="title"
               type="text"
               required
               placeholder="First Task"
               className="w-full mb-8 py-4 px-2 bg-transparent border-2 border-gray-400 rounded-md focus:outline-none focus:ring-0 focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none"
+              onChange={handleInputChange}
             />
             <hr />
             <textarea
-              id="description"
+              name="description"
               type="text"
               className="w-full mb-4 py-4 px-2 bg-transparent border-2 border-gray-400 rounded-md focus:outline-none focus:ring-0 focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none md:mb-8"
               rows="5"
+              onChange={handleInputChange}
             >
               I wanna achieve my GOALS...!
             </textarea>
