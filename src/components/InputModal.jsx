@@ -1,6 +1,35 @@
-import React from "react";
+import { useState } from "react";
+import addTask from "../services/addTask";
 
 export default function InputModal({ onClose }) {
+  //THE TASK DATA STATE
+  const [taskData, setTaskData] = useState({
+    title: "",
+    description: "",
+    completion: false,
+  });
+
+  //HANDLING THE USER INPUTTED DATA FUNCTION
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTaskData((prevTaskData) => ({
+      ...prevTaskData,
+      [name]: value,
+    }));
+  };
+
+  //SAVING THE NEW TASK FUNCTION
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    addTask(taskData);
+    setTaskData({
+      title: "",
+      description: "",
+      completion: false,
+    });
+    onClose();
+  };
+
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
@@ -21,20 +50,23 @@ export default function InputModal({ onClose }) {
             {/*body*/}
             <div className="my-8 ">
               <form
-                action="POST"
                 className="flex flex-col items-center justify-center mx-20"
+                onSubmit={handleAddTask}
               >
                 <input
-                  id="title"
+                  name="title"
                   type="text"
                   required
+                  value={taskData.title}
+                  onChange={handleInputChange}
                   placeholder="Task Title"
                   className="w-full mb-8 py-4 px-2 bg-transparent placeholder:text-gray-700 border-2 border-gray-900 text-gray-950 rounded-md focus:outline-none focus:ring-0 focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none"
                 />
                 <hr />
                 <textarea
-                  id="description"
+                  name="description"
                   type="text"
+                  onChange={handleInputChange}
                   className="w-full mb-4 py-4 px-2 bg-transparent border-2 border-gray-900 text-gray-950 rounded-md focus:outline-none focus:ring-0 focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none md:mb-8"
                   rows="5"
                 >
