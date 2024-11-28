@@ -9,6 +9,7 @@ export default function Header() {
   const handleClickModal = () => {
     setModal(!modal);
   };
+
   return (
     <div>
       <header className="text-gray-400 bg-gray-900 body-font">
@@ -32,7 +33,7 @@ export default function Header() {
           </button>
         </div>
       </header>
-      {modal && <InputModal onClose={() => setModal(false)} />}
+      {modal && <InputModal onClose={handleClickModal} />}
     </div>
   );
 }

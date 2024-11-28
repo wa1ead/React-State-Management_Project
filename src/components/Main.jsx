@@ -5,7 +5,9 @@ import InputModal from "./InputModal";
 import getTasks from "../services/getTasks";
 
 export default function Main() {
+  
   const [tasks, setTasks] = useState([]);
+
   useEffect(() => {
     async function fetchAllTasks() {
       try {
