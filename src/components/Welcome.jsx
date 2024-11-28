@@ -13,6 +13,7 @@ export default function Welcome() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prevTaskData) => ({
+      id: new Date().valueOf(),
       ...prevTaskData,
       [name]: value,
     }));
@@ -33,7 +34,7 @@ export default function Welcome() {
 
   return (
     <section className="bg-gray-950 text-gray-300">
-      <div className="container mx-auto">
+      <div className="container min-h-[80vh] mx-auto">
         <h1 className="text-lg font-semibold text-center pt-4 pb-12 md:font-bold md:text-2xl md:pt-10 md:pb-20">
           What's on your MIND today!
         </h1>
@@ -56,12 +57,12 @@ export default function Welcome() {
             <textarea
               name="description"
               type="text"
+              required
+              value="I wanna achieve my GOALS...!"
               className="w-full mb-4 py-4 px-2 bg-transparent border-2 border-gray-400 rounded-md focus:outline-none focus:ring-0 focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent focus:rounded-none md:mb-8"
               rows="5"
               onChange={handleInputChange}
-            >
-              I wanna achieve my GOALS...!
-            </textarea>
+            ></textarea>
             <button
               type="submit"
               className="inline-flex items-center gap-2 text-white bg-green-700 border-0 py-1 px-3 focus:outline-none hover:bg-green-600 rounded text-base mt-2 md:mt-0"
