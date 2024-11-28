@@ -13,6 +13,7 @@ export default function InputModal({ onClose }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prevTaskData) => ({
+      id: new Date().valueOf(),
       ...prevTaskData,
       [name]: value,
     }));
