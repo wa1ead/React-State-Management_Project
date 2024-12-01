@@ -2,6 +2,7 @@ import { useState } from "react";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
 import deleteTask from "../services/deleteTask";
+import updateCompleted from "../services/updateCompleted";
 
 export default function TaskItem({ task }) {
   //THE MODAL STATE
@@ -21,6 +22,12 @@ export default function TaskItem({ task }) {
     // console.log(id);
   };
 
+  //HANDLING THE COMPLETED BUTTON CLICK
+  const handleCompleted = () => {
+    updateCompleted(task.id);
+    window.location.reload();
+  };
+
   return (
     <>
       <div
@@ -38,7 +45,10 @@ export default function TaskItem({ task }) {
           >
             <i class="fa-regular fa-pen-to-square"></i>
           </button>
-          <button className="border rounded-full py-1 px-2 bg-green-600 transition duration-300 ease-in-out hover:scale-110 hover:bg-green-500">
+          <button
+            className="border rounded-full py-1 px-2 bg-green-600 transition duration-300 ease-in-out hover:scale-110 hover:bg-green-500"
+            onClick={handleCompleted}
+          >
             Completed <i class="fa-regular fa-square-check"></i>
           </button>
           <button
