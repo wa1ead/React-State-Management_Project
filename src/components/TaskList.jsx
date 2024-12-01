@@ -9,9 +9,9 @@ export default function TaskList({ tasks }) {
           All TASKS
         </h1>
         <div className="grid grid-cols-1 mx-20 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {tasks.map((task) => (
-            <TaskItem task={task} />
-          ))}
+          {tasks.map(
+            (task) => task.completion !== true && <TaskItem task={task} />
+          )}
         </div>
       </div>
     </section>
