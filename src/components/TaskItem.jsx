@@ -1,23 +1,24 @@
 import { useState } from "react";
 import EditModal from "./EditModal";
+import DeleteModal from "./DeleteModal";
 import deleteTask from "../services/deleteTask";
 
 export default function TaskItem({ task }) {
   //THE MODAL STATE
   const [modal, setModal] = useState(false);
+  //THE DELETE POPUP STATE
   const [deleteModal, setDeleteModal] = useState(false);
 
   //HANDLING THE OPEN/CLOSE MODAL BUTTON CLICK
   const handleClickModal = () => {
     setModal(!modal);
-    console.log(task);
+    // console.log(task);
   };
 
-  const handleClickDelete = (id) => {
+  //HANDLING THE DELETE BUTTON POPUP
+  const handleClickDelete = () => {
     setDeleteModal(!deleteModal);
     // console.log(id);
-    deleteTask(id);
-    window.location.reload();
   };
 
   return (
@@ -26,7 +27,7 @@ export default function TaskItem({ task }) {
         className="flex flex-col items-center border border-gray-400 bg-gray-900 p-4 gap-2 rounded-lg "
         key={task.id}
       >
-        <button onClick={handleClickModal}>
+        <button onClick={handleClickModal} className="w-full">
           <h2 className="font-semibold text-gray-200">{task.title}</h2>
           <p className="font-light text-gray-400">{task.description}</p>
         </button>
@@ -42,13 +43,14 @@ export default function TaskItem({ task }) {
           </button>
           <button
             className="border rounded-full py-1 px-2 bg-red-600 transition duration-300 ease-in-out hover:scale-110 hover:bg-red-500"
-            onClick={() => handleClickDelete(task.id)}
+            onClick={handleClickDelete}
           >
             <i class="fa-regular fa-trash-can"></i>
           </button>
         </div>
       </div>
       {modal && <EditModal task={task} onClose={handleClickModal} />}
+      {deleteModal && <DeleteModal task={task} onClose={handleClickDelete} />}
     </>
   );
 }
