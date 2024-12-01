@@ -1,6 +1,6 @@
 export default function deleteTask(taskId) {
   //STORING ALL TASKS INTO VARIABLE
-  const tasks = JSON.parse(localStorage.getItem("tasks"));
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
   //FILTERING THE TASKS ARRAY FROM SELECTED TASK
   const updatedTasks = tasks.filter((task) => taskId !== task.id);
