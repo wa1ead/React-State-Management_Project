@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import deleteTask from "../services/deleteTask";
 
 export default function DeleteModal({ task, onClose }) {
@@ -6,6 +7,7 @@ export default function DeleteModal({ task, onClose }) {
   const handleDeleteTask = (e) => {
     e.preventDefault();
     deleteTask(task.id);
+    toast.error("Task deleted Successfuly");
     onClose();
     window.location.reload();
   };
