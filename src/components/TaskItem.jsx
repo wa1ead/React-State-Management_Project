@@ -1,7 +1,7 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
-import deleteTask from "../services/deleteTask";
 import updateCompleted from "../services/updateCompleted";
 
 export default function TaskItem({ task }) {
@@ -25,6 +25,7 @@ export default function TaskItem({ task }) {
   //HANDLING THE COMPLETED BUTTON CLICK
   const handleCompleted = () => {
     updateCompleted(task.id);
+    toast.success("Task Completed");
     window.location.reload();
   };
 
