@@ -21,17 +21,19 @@ export default function TaskList({ tasks }) {
           </div>
         </div>
         <div className="flex flex-col mt-24">
-          <button
-            className="inline-flex items-center gap-2 text-white bg-green-700 border-0 mx-auto py-1 px-3 focus:outline-none hover:bg-green-600 rounded text-base mb-8"
-            onClick={handleShowCompleted}
-          >
-            COMPLETED TASKS{" "}
-            {showCompleted === false ? (
-              <i class="fa-solid fa-chevron-down"></i>
-            ) : (
-              <i class="fa-solid fa-chevron-up"></i>
-            )}
-          </button>
+          {tasks.map((task) => task.completion === true) ? (
+            <button
+              className="inline-flex items-center gap-2 text-white bg-green-700 border-0 mx-auto py-1 px-3 focus:outline-none hover:bg-green-600 rounded text-base mb-8"
+              onClick={handleShowCompleted}
+            >
+              COMPLETED TASKS{" "}
+              {showCompleted === false ? (
+                <i class="fa-solid fa-chevron-down"></i>
+              ) : (
+                <i class="fa-solid fa-chevron-up"></i>
+              )}
+            </button>
+          ) : null}
           {showCompleted === true ? (
             <div className="grid grid-cols-1 mx-20 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {tasks.map(

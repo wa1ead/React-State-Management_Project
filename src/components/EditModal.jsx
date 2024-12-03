@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import updateTask from "../services/updateTask";
 
 export default function EditModal({ task, onClose }) {
@@ -18,6 +19,7 @@ export default function EditModal({ task, onClose }) {
   const handleAddTask = (e) => {
     e.preventDefault();
     updateTask(taskData);
+    toast.success("Task updated Successfuly");
     onClose();
     window.location.reload();
   };
