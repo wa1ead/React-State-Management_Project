@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import addTask from "../services/addTask";
 
 export default function Welcome() {
@@ -18,7 +19,7 @@ export default function Welcome() {
       [name]: value,
     }));
   };
-  console.log(taskData);
+  // console.log(taskData);
 
   //SAVING THE NEW TASK FUNCTION
   const handleAddTask = (e) => {
@@ -29,6 +30,7 @@ export default function Welcome() {
       description: "",
       completion: false,
     });
+    toast.success("Task added Successfuly");
     window.location.reload();
   };
 

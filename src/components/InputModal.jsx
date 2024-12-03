@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import addTask from "../services/addTask";
 
 export default function InputModal({ onClose }) {
@@ -29,6 +30,7 @@ export default function InputModal({ onClose }) {
       completion: false,
     });
     onClose();
+    toast.success("Task added Successfuly");
     window.location.reload();
   };
 
